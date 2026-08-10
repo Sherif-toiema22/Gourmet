@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>طلبات - توصيل الطعام</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">طلبات<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#">الرئيسية</a></li>
+    <li><a href="#">المطاعم</a></li>
+    <li><a href="#">العروض</a></li>
+    <li><a href="#">طلباتي</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="btn-cart" onclick="toggleCart()">
+      🛒 سلة التسوق
+      <span class="cart-badge" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>🍕 جوعان؟ طلبات موجود!</h1>
+  <p>أطعمتك المفضلة من أقرب المطاعم إليك</p>
+  <div class="search-bar">
+    <input type="text" placeholder="ابحث عن مطعم أو طبق..." />
+    <button>🔍</button>
+  </div>
+</section>
+
+<!-- PROMO BANNERS -->
+<div class="promos">
+  <div class="promo-card orange">
+    <div class="promo-badge">pro</div>
+    <div class="discount">خصم 25%</div>
+    <div class="label">+ 10% إضافية للمشتركين</div>
+  </div>
+  <div class="promo-card purple">
+    <div class="promo-badge">جديد</div>
+    <div class="discount">وفّر 30%</div>
+    <div class="label">على أول طلب من ماركت</div>
+  </div>
+  <div class="promo-card green">
+    <div class="discount">توصيل مجاني</div>
+    <div class="label">عند الطلب أكثر من 7 ر.ع</div>
+  </div>
+  <div class="promo-card" style="background:linear-gradient(135deg,#F59E0B,#D97706);color:#fff;">
+    <div class="discount">أول لقمة</div>
+    <div class="label">خصم 15% وأكثر</div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-title">تصفح حسب الفئة</div>
+    <a class="see-all" href="#">الكل</a>
+  </div>
+  <div class="categories">
+    <div class="cat-item active" onclick="filterCategory('all',this)">
+      <div class="cat-icon">🍽️</div>
+      <div class="cat-label">الكل</div>
+    </div>
+    <div class="cat-item" onclick="filterCategory('burger',this)">
+      <div class="cat-icon">🍔</div>
+      <div class="cat-label">برجر</div>
+    </div>
+    <div class="cat-item" onclick="filterCategory('pizza',this)">
+      <div class="cat-icon">🍕</div>
+      <div class="cat-label">بيتزا</div>
+    </div>
+    <div class="cat-item" onclick="filterCategory('shawarma',this)">
+      <div class="cat-icon">🌯</div>
+      <div class="cat-label">شاورما</div>
+    </div>
+    <div class="cat-item" onclick="filterCategory('coffee',this)">
+      <div class="cat-icon">☕</div>
+      <div class="cat-label">قهوة</div>
+    </div>
+    <div class="cat-item" onclick="filterCategory('sushi',this)">
+      <div class="cat-icon">🍣</div>
+      <div class="cat-label">سوشي</div>
+    </div>
+    <div class="cat-item" onclick="filterCategory('chicken',this)">
+      <div class="cat-icon">🍗</div>
+      <div class="cat-label">دجاج</div>
+    </div>
+    <div class="cat-item" onclick="filterCategory('dessert',this)">
+      <div class="cat-icon">🧁</div>
+      <div class="cat-label">حلويات</div>
+    </div>
+    <div class="cat-item" onclick="filterCategory('sandwich',this)">
+      <div class="cat-icon">🥪</div>
+      <div class="cat-label">سندويشات</div>
+    </div>
+    <div class="cat-item" onclick="filterCategory('salad',this)">
+      <div class="cat-icon">🥗</div>
+      <div class="cat-label">سلطات</div>
+    </div>
+  </div>
+</section>
+
+<!-- TOP RESTAURANTS -->
+<section class="section" style="margin-top:28px;">
+  <div class="section-header">
+    <div class="section-title">⭐ أفضل المطاعم تصنيفاً</div>
+    <a class="see-all" href="#">عرض الكل</a>
+  </div>
+  <div class="filter-bar">
+    <button class="filter-btn active">الكل</button>
+    <button class="filter-btn">توصيل مجاني</button>
+    <button class="filter-btn">تقييم 4.0+</button>
+    <button class="filter-btn">عروض</button>
+    <button class="filter-btn">أسرع توصيل</button>
+  </div>
+  <div class="restaurants-grid">
+
+    <div class="rest-card">
+      <div class="rest-img-emoji" style="background:linear-gradient(135deg,#192E5D,#2a4a8a);">🍗</div>
+      <div class="rest-badge">pro</div>
+      <div class="rest-fav">❤️</div>
+      <div class="rest-body">
+        <div class="rest-name">بيت شاي DFC</div>
+        <div class="rest-meta">
+          <span class="rest-rating"><span class="star">⭐</span> 4.5</span>
+          <span>15-25 دقيقة</span>
+          <span>0.390 ر.ع</span>
+        </div>
+        <div class="rest-tags">
+          <span class="tag">دجاج</span>
+          <span class="tag">وجبات سريعة</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rest-card">
+      <div class="rest-img-emoji" style="background:linear-gradient(135deg,#1e3a6e,#4065A2);">🌯</div>
+      <div class="rest-fav">🤍</div>
+      <div class="rest-body">
+        <div class="rest-name">شاورما دبل</div>
+        <div class="rest-meta">
+          <span class="rest-rating"><span class="star">⭐</span> 4.9</span>
+          <span>10-20 دقيقة</span>
+          <span>0.290 ر.ع</span>
+        </div>
+        <div class="rest-tags">
+          <span class="tag">شاورما</span>
+          <span class="tag free">توصيل مجاني</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rest-card">
+      <div class="rest-img-emoji" style="background:linear-gradient(135deg,#163545,#1d5a6e);">☕</div>
+      <div class="rest-badge">pro</div>
+      <div class="rest-fav">❤️</div>
+      <div class="rest-body">
+        <div class="rest-name">كافيتريا راشد علي</div>
+        <div class="rest-meta">
+          <span class="rest-rating"><span class="star">⭐</span> 4.5</span>
+          <span>20-30 دقيقة</span>
+          <span>0.290 ر.ع</span>
+        </div>
+        <div class="rest-tags">
+          <span class="tag">قهوة</span>
+          <span class="tag">مشروبات</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rest-card">
+      <div class="rest-img-emoji" style="background:linear-gradient(135deg,#1a3060,#4065A2);">🍕</div>
+      <div class="rest-fav">🤍</div>
+      <div class="rest-body">
+        <div class="rest-name">بيتزا هوت</div>
+        <div class="rest-meta">
+          <span class="rest-rating"><span class="star">⭐</span> 4.7</span>
+          <span>25-35 دقيقة</span>
+          <span>0.500 ر.ع</span>
+        </div>
+        <div class="rest-tags">
+          <span class="tag">بيتزا</span>
+          <span class="tag free">توصيل مجاني</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rest-card">
+      <div class="rest-img-emoji" style="background:linear-gradient(135deg,#2a1a4e,#4a2a7e);">🍔</div>
+      <div class="rest-badge">جديد</div>
+      <div class="rest-fav">🤍</div>
+      <div class="rest-body">
+        <div class="rest-name">كروكو برجر</div>
+        <div class="rest-meta">
+          <span class="rest-rating"><span class="star">⭐</span> 4.5</span>
+          <span>15-25 دقيقة</span>
+          <span>0.350 ر.ع</span>
+        </div>
+        <div class="rest-tags">
+          <span class="tag">برجر</span>
+          <span class="tag">سريع</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rest-card">
+      <div class="rest-img-emoji" style="background:linear-gradient(135deg,#4a0e1a,#7E0827);">🍣</div>
+      <div class="rest-fav">❤️</div>
+      <div class="rest-body">
+        <div class="rest-name">سوشي كلاب</div>
+        <div class="rest-meta">
+          <span class="rest-rating"><span class="star">⭐</span> 4.8</span>
+          <span>30-45 دقيقة</span>
+          <span>0.700 ر.ع</span>
+        </div>
+        <div class="rest-tags">
+          <span class="tag">سوشي</span>
+          <span class="tag">ياباني</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- POPULAR DISHES -->
+<section class="section" style="margin-top:36px;">
+  <div class="section-header">
+    <div class="section-title">🔥 أطباق رائجة</div>
+    <a class="see-all" href="#">عرض الكل</a>
+  </div>
+  <div class="food-grid" id="foodGrid">
+
+    <div class="food-card" data-category="burger">
+      <div class="food-img" style="background:linear-gradient(135deg,#192E5D,#2a4a8a);">🍔
+        <button class="food-add" onclick="addToCart('برجر كلاسيك','🍔',3.5,this)">+</button>
+      </div>
+      <div class="food-body">
+        <div class="food-name">برجر كلاسيك</div>
+        <div class="food-rest">كروكو برجر</div>
+        <div class="food-footer">
+          <div><div class="food-price">3.500 ر.ع</div></div>
+          <div class="food-rating"><span class="star">⭐</span> 4.7</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="food-card" data-category="pizza">
+      <div class="food-img" style="background:linear-gradient(135deg,#1e3a6e,#4065A2);">🍕
+        <button class="food-add" onclick="addToCart('بيتزا مارغريتا','🍕',5.0,this)">+</button>
+      </div>
+      <div class="food-body">
+        <div class="food-name">بيتزا مارغريتا</div>
+        <div class="food-rest">بيتزا هوت</div>
+        <div class="food-footer">
+          <div>
+            <div class="food-price">5.000 ر.ع</div>
+            <div class="food-old-price">6.000 ر.ع</div>
+          </div>
+          <div class="food-rating"><span class="star">⭐</span> 4.9</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="food-card" data-category="shawarma">
+      <div class="food-img" style="background:linear-gradient(135deg,#163545,#1d5a6e);">🌯
+        <button class="food-add" onclick="addToCart('شاورما دجاج','🌯',2.5,this)">+</button>
+      </div>
+      <div class="food-body">
+        <div class="food-name">شاورما دجاج</div>
+        <div class="food-rest">شاورما دبل</div>
+        <div class="food-footer">
+          <div><div class="food-price">2.500 ر.ع</div></div>
+          <div class="food-rating"><span class="star">⭐</span> 4.8</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="food-card" data-category="coffee">
+      <div class="food-img" style="background:linear-gradient(135deg,#2a1a4e,#4a2a7e);">☕
+        <button class="food-add" onclick="addToCart('لاتيه كراميل','☕',1.8,this)">+</button>
+      </div>
+      <div class="food-body">
+        <div class="food-name">لاتيه كراميل</div>
+        <div class="food-rest">كافيتريا راشد علي</div>
+        <div class="food-footer">
+          <div><div class="food-price">1.800 ر.ع</div></div>
+          <div class="food-rating"><span class="star">⭐</span> 4.6</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="food-card" data-category="chicken">
+      <div class="food-img" style="background:linear-gradient(135deg,#192E5D,#2a4a8a);">🍗
+        <button class="food-add" onclick="addToCart('دجاج مقلي','🍗',4.0,this)">+</button>
+      </div>
+      <div class="food-body">
+        <div class="food-name">دجاج مقلي كريسبي</div>
+        <div class="food-rest">بيت شاي DFC</div>
+        <div class="food-footer">
+          <div>
+            <div class="food-price">4.000 ر.ع</div>
+            <div class="food-old-price">4.800 ر.ع</div>
+          </div>
+          <div class="food-rating"><span class="star">⭐</span> 4.7</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="food-card" data-category="sushi">
+      <div class="food-img" style="background:linear-gradient(135deg,#1a3060,#4065A2);">🍣
+        <button class="food-add" onclick="addToCart('سوشي مكس','🍣',8.0,this)">+</button>
+      </div>
+      <div class="food-body">
+        <div class="food-name">طبق سوشي مكس</div>
+        <div class="food-rest">سوشي كلاب</div>
+        <div class="food-footer">
+          <div><div class="food-price">8.000 ر.ع</div></div>
+          <div class="food-rating"><span class="star">⭐</span> 4.9</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="food-card" data-category="dessert">
+      <div class="food-img" style="background:linear-gradient(135deg,#4a0e1a,#7E0827);">🧁
+        <button class="food-add" onclick="addToCart('كاب كيك شوكولاتة','🧁',2.2,this)">+</button>
+      </div>
+      <div class="food-body">
+        <div class="food-name">كاب كيك شوكولاتة</div>
+        <div class="food-rest">حلويات سويت</div>
+        <div class="food-footer">
+          <div><div class="food-price">2.200 ر.ع</div></div>
+          <div class="food-rating"><span class="star">⭐</span> 4.8</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="food-card" data-category="sandwich">
+      <div class="food-img" style="background:linear-gradient(135deg,#163545,#1d5a6e);">🥪
+        <button class="food-add" onclick="addToCart('كلوب سندويش','🥪',3.0,this)">+</button>
+      </div>
+      <div class="food-body">
+        <div class="food-name">كلوب سندويش</div>
+        <div class="food-rest">سندويشات فريش</div>
+        <div class="food-footer">
+          <div><div class="food-price">3.000 ر.ع</div></div>
+          <div class="food-rating"><span class="star">⭐</span> 4.5</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="logo" style="margin-bottom:12px;">طلبات<span>.</span></div>
+      <p style="color:rgba(255,255,255,0.6);font-size:14px;">أسرع خدمة لتوصيل الطعام في المنطقة</p>
+    </div>
+    <div class="footer-col">
+      <h4>روابط سريعة</h4>
+      <a href="#">الرئيسية</a>
+      <a href="#">المطاعم</a>
+      <a href="#">العروض</a>
+      <a href="#">اتصل بنا</a>
+    </div>
+    <div class="footer-col">
+      <h4>مساعدة</h4>
+      <a href="#">كيف يعمل؟</a>
+      <a href="#">سياسة الاسترداد</a>
+      <a href="#">الشروط والأحكام</a>
+    </div>
+    <div class="footer-col">
+      <h4>تابعنا</h4>
+      <a href="#">انستغرام</a>
+      <a href="#">تويتر</a>
+      <a href="#">فيسبوك</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 طلبات. جميع الحقوق محفوظة.</div>
+</footer>
+
+<!-- CART PANEL -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCartOutside(event)">
+  <div class="cart-panel">
+    <div class="cart-header">
+      <div class="cart-title">🛒 سلتي</div>
+      <button class="close-cart" onclick="toggleCart()">✕</button>
+    </div>
+    <div id="cartItems">
+      <p style="color:var(--muted);text-align:center;padding:40px 0;">سلتك فارغة! أضف بعض الأطباق 🍽️</p>
+    </div>
+    <div id="cartFooter" style="display:none;">
+      <div class="cart-total">
+        <span>الإجمالي</span>
+        <span id="cartTotal" style="color:var(--orange);">0.000 ر.ع</span>
+      </div>
+      <button class="checkout-btn">تأكيد الطلب →</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
