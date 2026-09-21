@@ -1,10 +1,9 @@
 package com.Gourmet.Gourmet.catalog;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DurationFormat;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "ingredients")
@@ -18,14 +17,10 @@ public class Ingredient {
 
     private String description;
 
-    private String unit;
+    @Enumerated(EnumType.STRING)
+    private DurationFormat.Unit unit;
 
-    private BigDecimal basePrice;
+    private BigDecimal pricePerUnit;
 
     private boolean available = true;
-
-    @OneToMany(
-            mappedBy = "ingredient"
-    )
-    private List<MealIngredient> meals = new ArrayList<>();
 }

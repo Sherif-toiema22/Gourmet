@@ -1,5 +1,6 @@
 package com.Gourmet.Gourmet.catalog;
 
+import com.Gourmet.Gourmet.catalog.Ingredient;
 import com.Gourmet.Gourmet.catalog.Meal;
 import jakarta.persistence.*;
 
@@ -39,6 +40,4 @@ public class MealIngredient {
     private BigDecimal minQuantity;
 
     private BigDecimal maxQuantity;
-
-    private BigDecimal additionalPrice;
 }
