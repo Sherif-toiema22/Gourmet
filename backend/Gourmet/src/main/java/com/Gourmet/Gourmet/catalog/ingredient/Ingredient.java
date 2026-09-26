@@ -1,4 +1,4 @@
-package com.Gourmet.Gourmet.catalog;
+package com.Gourmet.Gourmet.catalog.ingredient;
 
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DurationFormat;
@@ -13,6 +13,7 @@ public class Ingredient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable=false)
     private String name;
 
     private String description;

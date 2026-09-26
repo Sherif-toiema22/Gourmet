@@ -1,4 +1,4 @@
-package com.Gourmet.Gourmet.catalog;
+package com.Gourmet.Gourmet.catalog.meal;
 
 import jakarta.persistence.*;
 

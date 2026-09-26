@@ -1,7 +1,6 @@
-package com.Gourmet.Gourmet.catalog;
+package com.Gourmet.Gourmet.catalog.ingredient;
 
-import com.Gourmet.Gourmet.catalog.Ingredient;
-import com.Gourmet.Gourmet.catalog.PreparationMethod;
+import com.Gourmet.Gourmet.catalog.meal.PreparationMethod;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
