@@ -24,4 +24,6 @@ public class CartItem {
     private List<CartItemIngredient> ingredients = new ArrayList<>();
 
     private Integer quantity;
+    @OneToOne
+    private CartItemPreparation preparation;
 }
