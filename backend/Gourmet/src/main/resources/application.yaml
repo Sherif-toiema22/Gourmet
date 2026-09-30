@@ -1,3 +1,5 @@
 spring:
   application:
     name: Gourmet
+server:
+  port: 9090
