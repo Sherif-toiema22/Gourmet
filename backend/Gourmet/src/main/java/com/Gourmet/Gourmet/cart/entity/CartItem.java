@@ -2,28 +2,36 @@ package com.Gourmet.Gourmet.cart.entity;
 
 import com.Gourmet.Gourmet.catalog.meal.Meal;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "cart_items")
+@Getter
+@Setter
 public class CartItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cart_id", nullable = false)
     private Cart cart;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "meal_id", nullable = false)
     private Meal meal;
 
-    @OneToMany(mappedBy = "cartItem")
-    private List<CartItemIngredient> ingredients = new ArrayList<>();
-
     private Integer quantity;
-    @OneToOne
-    private CartItemPreparation preparation;
+
+    @OneToMany(
+            mappedBy = "cartItem",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<CartItemIngredient> ingredients = new ArrayList<>();
 }

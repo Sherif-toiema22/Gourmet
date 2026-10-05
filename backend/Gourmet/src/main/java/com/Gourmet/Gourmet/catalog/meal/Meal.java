@@ -1,6 +1,8 @@
 package com.Gourmet.Gourmet.catalog.meal;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -8,6 +10,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "meals")
+@Getter
+@Setter
 public class Meal {
 
     @Id

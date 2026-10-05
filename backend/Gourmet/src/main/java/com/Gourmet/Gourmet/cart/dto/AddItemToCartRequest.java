@@ -14,6 +14,4 @@ public class AddItemToCartRequest {
     private Integer quantity;
 
     private List<CartItemIngredientRequest> ingredients;
-
-    private Long preparationMethodId;
 }

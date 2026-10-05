@@ -2,6 +2,8 @@ package com.Gourmet.Gourmet.catalog.meal;
 
 import com.Gourmet.Gourmet.catalog.ingredient.Ingredient;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
@@ -14,6 +16,8 @@ import java.math.BigDecimal;
                 )
         }
 )
+@Getter
+@Setter
 public class MealIngredient {
 
     @Id
